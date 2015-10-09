@@ -14,39 +14,81 @@ import android.widget.Button;
 import android.widget.ImageView;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.entity.BufferedHttpEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import java.io.BufferedReader;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class MainActivity extends Activity {
     private static final String TAG = "Log-Messages";
-    private final String SRC = "http://cg8t.com/api/v1/users/5681034041491456/1008151122.jpg?";
+    //http://cg8t.com/api/v1/users/5681034041491456/1008151122.jpg?_method=head&_format=json
+    private final String SRC = "http://cg8t.com/api/v1/users/5681034041491456/1008151122.jpg";
     private static ImageView pic;
     private Button submitButton, getButton;
 
-    public static Bitmap getBitmapFromURL(String url) {
+    public static Bitmap getResponseFromURL(String url) {
 
+        url += "?_method=head&_format=json";
+   //     url = "http://cg8t.com/api/v1/users/5681034041491456/1008151122.jpg?_method=head&_format=json";
+        HttpResponse httpResponse = null;
         HttpClient httpclient = new DefaultHttpClient();
         Bitmap bitmap = null;
         try {
             HttpGet httpGet = new HttpGet(url);
+            httpResponse = httpclient.execute(httpGet);
+            StatusLine statusLine = httpResponse.getStatusLine();
+            int statusCode = statusLine.getStatusCode();
 
-            HttpResponse response = (HttpResponse) httpclient.execute(httpGet);
-            Log.i(TAG, response.toString());
-            HttpEntity entity = response.getEntity();
-            BufferedHttpEntity b_entity = new BufferedHttpEntity(entity);
-            InputStream input = b_entity.getContent();
-            Log.i(TAG, input.toString());
-            bitmap = BitmapFactory.decodeStream(input);
-            pic.setImageBitmap(bitmap);
+            HttpEntity entity = httpResponse.getEntity();
+            if (statusCode == HttpStatus.SC_OK) {
+
+                BufferedReader br = new BufferedReader(new InputStreamReader(httpResponse.getEntity().getContent()));
+                StringBuffer resultJSON = new StringBuffer();
+                String line = "";
+                while ((line = br.readLine()) != null) {
+                    resultJSON.append(line);
+                }
+                String resultJSONString = resultJSON.toString();
+                Log.i(TAG, resultJSONString);
+            }
+
 
         } catch (Exception ex) {
 
             ex.printStackTrace();
 
+        }
+        return bitmap;
+    }
+
+    public static Bitmap getBitMapFromURL(String url) {
+
+        HttpResponse httpResponse = null;
+        HttpClient httpclient = new DefaultHttpClient();
+        Bitmap bitmap = null;
+        try {
+            HttpGet httpGet = new HttpGet(url);
+            httpResponse = httpclient.execute(httpGet);
+            StatusLine statusLine = httpResponse.getStatusLine();
+            int statusCode = statusLine.getStatusCode();
+
+            HttpEntity entity = httpResponse.getEntity();
+            if (statusCode == HttpStatus.SC_OK) {
+
+                BufferedHttpEntity b_entity = new BufferedHttpEntity(entity);
+                InputStream input = b_entity.getContent();
+                Log.i(TAG, input.toString());
+                bitmap = BitmapFactory.decodeStream(input);
+                pic.setImageBitmap(bitmap);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
         return bitmap;
     }
@@ -62,8 +104,8 @@ public class MainActivity extends Activity {
 
         getButton.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-
-                pic.setImageBitmap(getBitmapFromURL(SRC));
+                getResponseFromURL(SRC);
+                pic.setImageBitmap(getBitMapFromURL(SRC));
             }
         });
 
