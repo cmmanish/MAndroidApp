@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "code": 200
+  },
+  "data": {
+    "lastModified": 1444329464000,
+    "name": "1008151122.jpg",
+    "attributes": {},
+    "contentType": "image/jpeg",
+    "size": 946242,
+    "etag": "\"7e0db3d6b3d949ea4b851b1c04e3a880\"",
+    "keywords": [],
+    "experience": 1444303362000,
+    "width": 2988,
+    "height": 5312,
+    "serving_url": "http://lh3.googleusercontent.com/01nl-hxGwjmxAnvRwlC34MLpr4XR_u65HSE3Ub73mm31b-DrKY8gKlJEW4OefV1c_2zZwsU8fXkJzx2nGuaFGpCJ6YY=s256",
+    "make": "LG Electronics",
+    "model": "VS986",
+    "fnumber": "f/1.8",
+    "exposure_time": "1/23 sec",
+    "iso": "350",
+    "dateTaken": 1444303362000,
+    "gps": {
+      "latitude": 37.321163,
+      "longitude": -122.03148
+    },
+    "type": "image",
+    "path": ""
+  }
+}
