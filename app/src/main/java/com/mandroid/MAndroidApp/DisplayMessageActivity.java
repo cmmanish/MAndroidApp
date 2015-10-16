@@ -1,4 +1,4 @@
-package com.mandroid.mapp;
+package com.mandroid.MAndroidApp;
 
 import android.content.Intent;
 import android.graphics.Color;

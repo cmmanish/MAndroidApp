@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mandroid.mapp" >
+    package="com.mandroid.MAndroidApp" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.mandroid.mapp.MainActivity"
+            android:name="com.mandroid.MAndroidApp.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
@@ -21,13 +21,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.mandroid.mapp.DisplayMessageActivity"
+            android:name="com.mandroid.MAndroidApp.DisplayMessageActivity"
             android:label="@string/title_activity_display_message"
-            android:parentActivityName="com.mandroid.mapp.MainActivity"
+            android:parentActivityName="com.mandroid.MAndroidApp.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.mandroid.mapp.MainActivity" />
+                android:value="com.mandroid.MAndroidApp.MainActivity" />
         </activity>
     </application>
 

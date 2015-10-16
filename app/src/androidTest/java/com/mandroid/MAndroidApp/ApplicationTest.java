@@ -1,4 +1,4 @@
-package com.mandroid.mapp;
+package com.mandroid.MAndroidApp;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

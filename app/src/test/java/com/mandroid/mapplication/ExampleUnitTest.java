@@ -1,4 +1,4 @@
-package com.mandroid.mapp;
+package com.mandroid.MAndroidApp;
 
 import org.junit.Test;
 
