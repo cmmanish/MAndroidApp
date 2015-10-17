@@ -2,25 +2,26 @@ package com.mandroid.MAndroidApp;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 public class MainActivity extends Activity {
     private static final String TAG = "Log-Messages";
-    public final static String MESSAGE = "com.mandroid.mapp.MESSAGE";
+    public final static String MESSAGE = "MESSAGE";
+    private ImageView image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        getWindow().getDecorView().setBackgroundColor(Color.GRAY);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-        // Get the layout from image.xml
         setContentView(R.layout.activity_main);
+        image = (ImageView) findViewById(R.id.mainImageView);
+        image.setImageResource(R.drawable.icon);
     }
 
     /**

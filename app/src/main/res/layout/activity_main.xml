@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:background="@android:color/holo_blue_light"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
               android:orientation="horizontal">
@@ -9,7 +10,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/edit_message"
-            android:layout_gravity="center_vertical"/>
+            android:layout_gravity="center_vertical"
+            android:layout_weight="8.73"/>
 
     <Button
             android:layout_width="wrap_content"
@@ -18,5 +20,11 @@
             android:onClick="sendMessage"
             android:layout_gravity="center_vertical"
             android:textStyle="bold|normal"/>
+
+    <ImageView
+            android:layout_width="154dp"
+            android:layout_height="362dp"
+            android:id="@+id/mainImageView"
+            />
 
 </LinearLayout>

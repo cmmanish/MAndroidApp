@@ -2,27 +2,31 @@ package com.mandroid.MAndroidApp;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 public class DisplayMessageActivity extends Activity {
 
+    private ImageView image;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        try {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_display_message);
+            // Get the message from the intent
+            Intent intent = getIntent();
+            String message = intent.getStringExtra(MainActivity.MESSAGE);
+            image = (ImageView) findViewById(R.id.image);
+            image.setImageResource(R.drawable.icon);
 
-        // Get the message from the intent
-        Intent intent = getIntent();
-        String message = intent.getStringExtra(MainActivity.MESSAGE);
+//            TextView mesgText = (TextView) findViewById(R.id.mesgTextView);
+            //            mesgText.setText(message);
+            //            mesgText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 33);
+            //            mesgText.setTextColor(Color.YELLOW);
 
-        // Create the text view
-        TextView textView = new TextView(this);
-        textView.setTextColor(Color.RED);
-        textView.setTextSize(40);
-        textView.setText("Hello " + message);
-
-        // Set the text view as the activity layout
-        setContentView(textView);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
