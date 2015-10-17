@@ -1,39 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
               android:orientation="horizontal">
 
     <EditText
             android:id="@+id/edit_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/edit_message"/>
+            android:hint="@string/edit_message"
+            android:layout_gravity="center_vertical"/>
 
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_send"
-            android:onClick="sendMessage"/>
+            android:onClick="sendMessage"
+            android:layout_gravity="center_vertical"
+            android:textStyle="bold|normal"/>
 
-    <SlidingDrawer
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:content="@+id/linearLayout"
-            android:handle="@+id/button"
-            android:id="@+id/slidingDrawer">
-
-        <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-        </LinearLayout>
-
-        <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Handle"/>
-    </SlidingDrawer>
 </LinearLayout>
